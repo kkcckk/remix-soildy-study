@@ -1,0 +1,94 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_dividend",
+						"type": "uint256"
+					}
+				],
+				"name": "getExactDividedBy2And3",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_dividend",
+						"type": "uint256"
+					}
+				],
+				"name": "getExactDividedBy2And3WithoutModifier",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/ModifierInheritance.sol": "Idendifier"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ModifierInheritance.sol": {
+			"keccak256": "0x34f2d66ba050c2de695bb6aa5b4a0bd72fb5b2969a63b0ba994fbf3eb2195056",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b120f38bab466c3edde5488b060e9ae3cca9a72bcc05a8693692e3216d8eebf6",
+				"dweb:/ipfs/QmXLHvM3P2xFC3obGzR13rcMjJHcg2AXmGHpKnRMWPkUSW"
+			]
+		}
+	},
+	"version": 1
+}

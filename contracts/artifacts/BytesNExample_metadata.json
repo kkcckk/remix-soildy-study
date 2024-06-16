@@ -1,0 +1,72 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "_byte",
+				"outputs": [
+					{
+						"internalType": "bytes1",
+						"name": "",
+						"type": "bytes1"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_byte32",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/BytesNExample.sol": "BytesNExample"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/BytesNExample.sol": {
+			"keccak256": "0xfe40e19beaeb7fac1a53d5dd8acc661355f79e9ca64a9feefe963c54cd94a24d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c1960435bb50dd79fc60ba14700641d758d5cbc831f11a68c1cc5a33ba839c9e",
+				"dweb:/ipfs/QmTfW8NtnDTVHWBFRJNUWXPANszJcDVLK9ryDpyJ8hBS4d"
+			]
+		}
+	},
+	"version": 1
+}
