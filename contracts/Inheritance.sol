@@ -5,7 +5,7 @@ pragma solidity ^0.8.4;
 contract Yeye {
     event Log(string msg);
 
-    // 加上了virtual关键字，说明希望子类重写这个函数
+    // 加上了virtual关键字，说明希望子类重写这个函数，而且子类必须重写被virtual修饰函数
     function hip() public virtual {
         emit Log("Yeye");
     }
@@ -23,7 +23,7 @@ contract Yeye {
 // 爷爷的子类，Baba类
 contract Baba is Yeye{
     // 重写父类的函数
-    // 重写的函数加上了关键字override
+    // 重写的函数加上了关键字override，并且如果Baba有子类的话，也必须重写这个函数
     function hip() public virtual override {
         emit Log("Baba");
     }
