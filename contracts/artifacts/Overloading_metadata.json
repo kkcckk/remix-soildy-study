@@ -1,0 +1,131 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "_n",
+						"type": "uint8"
+					}
+				],
+				"name": "f",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "out",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "_n",
+						"type": "uint16"
+					}
+				],
+				"name": "f",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "out",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "saySomething",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "something",
+						"type": "string"
+					}
+				],
+				"name": "saySomething",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"f(uint8)": {
+					"notice": "注意：在调用重载函数时，会把输入的实际参数的类型和函数参数的类型做匹配。 如果出现多个匹配的函数会报错，就比如一个合约中，有两个相同名称的函数构成重载函数， 一个参数类型为uint8，一个参数类型为uint16， 假设调用函数，并传入参数为50时，会同时匹配类型uint8和uint16，所以不知道是调用哪个函数， 因此会报错"
+				},
+				"saySomething()": {
+					"notice": "重载：solidity允许函数进行重载（overloading），即名字相同但输入参数 类型不同的函数可以同时存在。和java的重载是一样的。 注意：修饰器（modifier）不允许重载"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Overloading.sol": "Overloading"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Overloading.sol": {
+			"keccak256": "0xcb9afb36161ed6affaee0d2897cc08c329e4dfe503c20da0af18fe25ea02753c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e1e5d25f8b96343ba62e1975e65cf67d161c17b47423558fda639c5d7757ecc0",
+				"dweb:/ipfs/QmRFn3QPsCvcPxp3bEA1KK5WsZoUYRAQaTBtGVcTQzrZCb"
+			]
+		},
+		"hardhat/console.sol": {
+			"keccak256": "0x7434453e6d3b7d0e5d0eb7846ffdbc27f0ccf3b163591263739b628074dc103a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://49355f780520494d1d5a0f01858385e51bb5280ce0ecfb960f16995065dca395",
+				"dweb:/ipfs/QmSwJ6C5QLz6xKeQZS8wbwjU1KxRFTYfwbGmtzisd5sRW4"
+			]
+		}
+	},
+	"version": 1
+}
