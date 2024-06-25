@@ -1,6 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
+/**
+    通常情况下，不建议使用call调用其他合约，由于调用其他合约时，并不知道对方的代码内容是什么，虽然这很有用，
+    但是，不安全，
+    call调用改变的是被调用合约里面的状态
+*/
+
 contract Call {
     // 记录调用call函数返回的两个值bool和bytes
     event Response(bool success, bytes data);
@@ -33,11 +39,14 @@ contract Call {
 
 
 contract OtherContract {
+    // 调用fallback触发的事件
+    event FallbackLog(string);
+
     uint256 private _x = 0;
 
     event Log(uint256 amount, uint gas);
 
-    fallback() external payable { }
+    fallback() external payable { emit FallbackLog("emit fallback event"); }
     receive() external payable { }
 
     function getBalance() public view returns(uint256) {

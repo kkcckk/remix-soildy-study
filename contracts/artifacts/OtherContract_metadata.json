@@ -10,6 +10,19 @@
 				"inputs": [
 					{
 						"indexed": false,
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "FallbackLog",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
@@ -23,6 +36,10 @@
 				],
 				"name": "Log",
 				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
 			},
 			{
 				"inputs": [],
@@ -62,6 +79,10 @@
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -77,7 +98,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/CallContract.sol": "OtherContract"
+			"contracts/Call.sol": "OtherContract"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -91,12 +112,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/CallContract.sol": {
-			"keccak256": "0x46a25abab6de229cc346315277f8448207093c4846732c9ad4723dbb30787a45",
+		"contracts/Call.sol": {
+			"keccak256": "0xd2680aab7d1f430937d2a8a97838af942a7a03a2af0161ffcba86959f65d3ed0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a33c1cc5d45e05b5abc864d9142c97bfe4f8ea491be5825055822249725d0f23",
-				"dweb:/ipfs/Qmca8hb9YudCrTsHiftsr7fkPZbfp4WLVWpGr8YgJyQyGq"
+				"bzz-raw://d42baca3ae7a046fb73d143905ff4cd5f937331520d1f72b940ddbddb52d2ec8",
+				"dweb:/ipfs/QmY33qoRtUW9MAum2EuvogWHkEMiEa17czvUW18yS6rivW"
 			]
 		}
 	},

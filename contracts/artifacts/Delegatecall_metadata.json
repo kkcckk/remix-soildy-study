@@ -1,0 +1,46 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "功能和call是一样的， 只不过delegatecall是改变自身合约的状态变量 而call改变的是被调用合约的状态变量",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DelegateCall.sol": "Delegatecall"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DelegateCall.sol": {
+			"keccak256": "0xb3c390559920705f51bbf0861a1900ee9bb0075056548967f7e67280d47f0948",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c47e266432cbbe2b7119674840d292be33cbe0bb1d832a0b88072411f6683ff5",
+				"dweb:/ipfs/QmTKv6QxpZamtFtGxFwEmhpkmAsCmLMdS9TwyLMHFxTgCn"
+			]
+		}
+	},
+	"version": 1
+}

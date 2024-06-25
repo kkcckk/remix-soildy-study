@@ -83,6 +83,7 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {},
+			"notice": "通常情况下，不建议使用call调用其他合约，由于调用其他合约时，并不知道对方的代码内容是什么，虽然这很有用， 但是，不安全， call调用改变的是被调用合约里面的状态",
 			"version": 1
 		}
 	},
@@ -103,11 +104,11 @@
 	},
 	"sources": {
 		"contracts/Call.sol": {
-			"keccak256": "0xe794ad2987140cdc7092c85ab97fe2354f79d05d67f78c62531bcd04495c70f7",
+			"keccak256": "0xd2680aab7d1f430937d2a8a97838af942a7a03a2af0161ffcba86959f65d3ed0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9f86b12e984c7582fa08013dfb2cbad36c0057e8605d683a2e94bbea631d5ea3",
-				"dweb:/ipfs/QmZhAm18Cp7nCC456hZf33mzZjA6VZ8scNd7e7dGSvxZU6"
+				"bzz-raw://d42baca3ae7a046fb73d143905ff4cd5f937331520d1f72b940ddbddb52d2ec8",
+				"dweb:/ipfs/QmY33qoRtUW9MAum2EuvogWHkEMiEa17czvUW18yS6rivW"
 			]
 		}
 	},

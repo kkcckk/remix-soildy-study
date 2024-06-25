@@ -6,27 +6,127 @@
 	"output": {
 		"abi": [
 			{
+				"anonymous": false,
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_b",
-						"type": "uint256"
+						"indexed": false,
+						"internalType": "string",
+						"name": "msg",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
 					}
 				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
+				"name": "CallRecord",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "msg",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "DelegateCallRecord",
+				"type": "event"
 			},
 			{
 				"inputs": [],
-				"name": "a",
+				"name": "_num",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "uint8",
 						"name": "",
-						"type": "uint256"
+						"type": "uint8"
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_sender",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "num",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "_addr",
+						"type": "address"
+					}
+				],
+				"name": "callSetVars",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "num",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "_addr",
+						"type": "address"
+					}
+				],
+				"name": "delegateSetVars",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			}
 		],
@@ -43,7 +143,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/ContructorInheritance.sol": "B"
+			"contracts/DelegateCall.sol": "B"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -57,12 +157,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/ContructorInheritance.sol": {
-			"keccak256": "0x6fb91372e9457818b4832bf38311db0d61def2d5e5d34266d1127594f8626599",
+		"contracts/DelegateCall.sol": {
+			"keccak256": "0xb3c390559920705f51bbf0861a1900ee9bb0075056548967f7e67280d47f0948",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a9b72dff2d9c13e20e5cd8ec71f041c390abfae83fb7fe3e11536451acf3e85f",
-				"dweb:/ipfs/QmXnNhjzonkcZmEawpSs2HPFUJCtzVnHKsfvMNPeSBeMV7"
+				"bzz-raw://c47e266432cbbe2b7119674840d292be33cbe0bb1d832a0b88072411f6683ff5",
+				"dweb:/ipfs/QmTKv6QxpZamtFtGxFwEmhpkmAsCmLMdS9TwyLMHFxTgCn"
 			]
 		}
 	},
