@@ -1,0 +1,106 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "Fallbacked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Received",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"Fallbacked(address,uint256,bytes)": {
+					"notice": "fallback()函数，会在调用不存的函数（代理合约）或者转账时触发。可用于转账或者代理合约 声明方式，不需要加function关键是： fallback() external payable {....} 只能被external修饰,如果是转账的话，还得加上payable"
+				},
+				"Received(address,uint256)": {
+					"notice": "receive()函数，收到ETH转账时调用，并且一个合约中最多只能存在一个receive() 声明方式，不需要加function关键字: receive() external payable {...} receive()函数没有参数，没有返回值，并且只能被external和payable修饰 触发：在接收到ETH时触发，也就是对方调用send() transfer() call()"
+				}
+			},
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Fallback.sol": "Fallback"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Fallback.sol": {
+			"keccak256": "0x5055e073a5feedf244c7e7ff23a5c5d78ac9f92b40f517b2beda40d82499e874",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f08f4064e581257b7ae015f4af9d34a723308414a7fa87fc8ad7618f84ce5f77",
+				"dweb:/ipfs/QmXkkboJFXU6MhkgC4QUkFML7ABtmAh98GMtiyQdoe5dkD"
+			]
+		}
+	},
+	"version": 1
+}

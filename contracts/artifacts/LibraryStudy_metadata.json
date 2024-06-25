@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_num",
+						"type": "uint256"
+					}
+				],
+				"name": "numToString",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/LibraryStudy.sol": "LibraryStudy"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/LibraryStudy.sol": {
+			"keccak256": "0x32b4b45a3ae3cbc7c6c46ce996113db6a1adc442933a5713d4a53c134a8b2c5d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://aec73297200bcd0c2d97495e9fb6d1ea849a9e91026a6acd31990fac520b336f",
+				"dweb:/ipfs/QmNe2oKKDCbEkxDK8sD4S8BvFE9V8tYPW4vLXXgyyevLbB"
+			]
+		}
+	},
+	"version": 1
+}

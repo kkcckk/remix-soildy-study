@@ -10,9 +10,15 @@
 				"inputs": [
 					{
 						"indexed": false,
-						"internalType": "string",
-						"name": "msg",
-						"type": "string"
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "gas",
+						"type": "uint256"
 					}
 				],
 				"name": "Log",
@@ -20,24 +26,20 @@
 			},
 			{
 				"inputs": [],
-				"name": "hip",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "pop",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "yeye",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -53,7 +55,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/ImportYeye.sol": "Yeye"
+			"contracts/SendEth.sol": "ReceiveEth"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -67,12 +69,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/ImportYeye.sol": {
-			"keccak256": "0x305cc504c74a371c6554906a0e81a28097a56f2d0390d82dd21cc4d52dc898d6",
+		"contracts/SendEth.sol": {
+			"keccak256": "0x5dd94f9c224b8e85b9a0b7a8fb2850cb3f6c3c7eb30c102182c588086dc54679",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://845089e96072a9a0c00316ed250ac8c808406d10d7a594e6df7270c6786e6eae",
-				"dweb:/ipfs/Qme1kUYuTtf126CLJdLdv7wJrdDJnYBd21Bb4vPz5h6GpV"
+				"bzz-raw://5f419bada4b75b6dd057e71e5fbdcc6ba735d7aafc95b233e0ec7545877ca74c",
+				"dweb:/ipfs/QmNQnxUcgwAM3TwjoY1pmUwxcWdtCrpbdFtaHB25vfZCEQ"
 			]
 		}
 	},
