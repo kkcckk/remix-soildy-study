@@ -23,10 +23,10 @@ contract Delegatecall {
                 uint public num;
                 address public sender;
             那么被调用合约C中也应该有如下变量
-                uint public num;
-                address public sender;
+                uint public _num;
+                address public _sender;
             
-            我理解是修饰字段 类型 顺序 名称都应该是一模一样
+            我理解是修饰字段 类型 顺序都应该是一模一样,名称也最好保持一致,但是不一样也是可以的
         
         2. 和call一样,也是不安全的,不知道被调用合约的源码,不能保证对方的源码是安全的,不建议使用delegatecall
         去调用合约

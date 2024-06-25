@@ -73,11 +73,11 @@
 	},
 	"sources": {
 		"contracts/DelegateCall.sol": {
-			"keccak256": "0xb3c390559920705f51bbf0861a1900ee9bb0075056548967f7e67280d47f0948",
+			"keccak256": "0x2026353de8649ba3549557577f8c1b04e81d2334b73ba629f6ae9fb1b3fb5e48",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c47e266432cbbe2b7119674840d292be33cbe0bb1d832a0b88072411f6683ff5",
-				"dweb:/ipfs/QmTKv6QxpZamtFtGxFwEmhpkmAsCmLMdS9TwyLMHFxTgCn"
+				"bzz-raw://849850063e04fe00c88245fd62f8b10156363e5a4be2e285fc4a452853e198c7",
+				"dweb:/ipfs/QmUgnA5YrXM6AjRMpWdob96c1928Uy99CsgovyETEuM5Fa"
 			]
 		}
 	},
