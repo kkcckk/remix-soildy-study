@@ -1,0 +1,92 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "Log",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "calculateMintSignature",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "methodId",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "函数签名就是函数名称带上参数类型的字符串：\"函数名称(参数类型1, 参数类型2, 参数类型3,...)\", 在同一个合约中，不同的函数的函数签名是不一样的，所以合约中是用函数签名来区分函数的 方法id method id：就是函数签名的keccak256之后的前四个byte：bytes4(keccak256(\"函数名(参数类型1, 参数类型2, ...)\"))， 当selector和method id能匹配上时，就会调用对应的函数 注意的点，int和uint在函数签名中要写为int256和uint256",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/SelectContract.sol": "SelectContract"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/SelectContract.sol": {
+			"keccak256": "0x1ff8497fa130a2a03556955525203ac90be5b9341eae29dfeb71c80b88f0b08d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://43b5c826d93d15064e155608d767d3141308f2115166af8ed1c4d2e88ca15b6a",
+				"dweb:/ipfs/QmaqFoLERAmnWWtQrMGz18QwaxM6EPSKLcirVQQvJgkawm"
+			]
+		}
+	},
+	"version": 1
+}
