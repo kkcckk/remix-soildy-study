@@ -1,0 +1,109 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "payable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "factory",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_token01",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_token02",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token01",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token02",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "有两种方式可以在合约中创建合约 1. 使用Create（和java创建类一样的方式） Contract x = new Contract{value : _value}(param); 其中Contract是创建的合约名称 {value: _value}是创建合约时初始化的以太币的个数，前提是构造器是payable的 param是构造器的参数，如果有的话 2. 使用Create2",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/CreateNCreate2.sol": "parir"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/CreateNCreate2.sol": {
+			"keccak256": "0xe5774e3d1333dd2d68232b91ab16975eee46c15e35820282f56a631d9654c1df",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6b3d11d378485696e869cd43f33dc3c48c878e04126dcebeddbc081e1608558b",
+				"dweb:/ipfs/Qmbn6ds5fWeavSD1oWM7ZvarfmBuuPjcUUM5n8Gasg2Qwp"
+			]
+		}
+	},
+	"version": 1
+}

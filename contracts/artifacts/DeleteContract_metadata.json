@@ -1,0 +1,89 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "payable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "deleteContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "balance",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "value",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "selfdestruct, 在EIP-6049，可以删除合约并转移合约剩余的ETH 在以太坎昆(Cancun)升级中，即EIP-6780，减少了SELFDESTRUCT操作码的功能，只可以转移剩余的ETH， 而删除功能，只有在创建合约-自毁这两个操作处在同一笔交易中才能生效。 使用方式：selfdestruct(_addr); _addr必须是paybale address类型的，因为要用这个地址来接收ETH",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DeleteContract.sol": "DeleteContract"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DeleteContract.sol": {
+			"keccak256": "0x14b29d7534ac1150300bcd8862778c464dce2b0afe3ccb26ac80a5d66fee9d70",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bb1084efd1ac5ce25be2dc9954f83416d87f014e4479a4d2056323a4f01dcb89",
+				"dweb:/ipfs/QmSL1xt8HmXfFKiX4PduyFMz2qW8Vgb6u32pU1G6KdZ3uz"
+			]
+		}
+	},
+	"version": 1
+}
