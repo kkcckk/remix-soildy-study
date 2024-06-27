@@ -1,0 +1,77 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "a",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "b",
+						"type": "uint256"
+					}
+				],
+				"name": "onlyEven",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "try-catch可以捕获异常，和java中的一样 只能用于external函数，或者创建合约时constructor的调用 用法： try externalContract.函数(函数参数...) [returns(类型 参数名称)] { 正常代码运行 } catch Error() { 运行失败运行 } 可以用于assert() require() revert()的异常捕获",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/TryCatchContract.sol": "EXContract"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/TryCatchContract.sol": {
+			"keccak256": "0xfea570f5f322ae5a35daef09c101b4ed4247add4c975fe8e83df5226e2c1fcf6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1d6ee720b0c7d5fc885aac70022684c863f78164ab653390f898a6cdb74efe8f",
+				"dweb:/ipfs/QmdbJ4BUyjkbpGntxUZiYapdH64SewnhfPzPznrZv6Ja5n"
+			]
+		}
+	},
+	"version": 1
+}

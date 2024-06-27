@@ -10,6 +10,31 @@
 				"inputs": [
 					{
 						"indexed": false,
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "CallWithSignatureEvent",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
 						"internalType": "address",
 						"name": "addr",
 						"type": "address"
@@ -25,7 +50,26 @@
 				"type": "event"
 			},
 			{
-				"inputs": [],
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes4",
+						"name": "methodId",
+						"type": "bytes4"
+					}
+				],
+				"name": "SelectorEvent",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "funSignature",
+						"type": "string"
+					}
+				],
 				"name": "calculateMintSignature",
 				"outputs": [
 					{
@@ -35,6 +79,32 @@
 					}
 				],
 				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "callWithSignature",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "p",
+						"type": "uint256"
+					}
+				],
+				"name": "fixedSizeParamSelector",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "methodId",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -49,6 +119,66 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "uid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes",
+								"name": "name",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct SelectContract.User",
+						"name": "user",
+						"type": "tuple"
+					},
+					{
+						"internalType": "enum SelectContract.School",
+						"name": "school",
+						"type": "uint8"
+					}
+				],
+				"name": "mixedParamSelector",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "methodId",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[2]",
+						"name": "p1",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "string",
+						"name": "p2",
+						"type": "string"
+					}
+				],
+				"name": "noFiexdSizeParamSelector",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "methodId",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -58,7 +188,11 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"mixedParamSelector((uint256,bytes),uint8)": {
+					"notice": "映射类型参数，结构体类型参数，枚举类型参数（底层实现是基于uint8实现的），合约类型参数 合约类型参数转化为address 结构体类型参数转化为tuple 枚举类型参数转化为uint8"
+				}
+			},
 			"notice": "函数签名就是函数名称带上参数类型的字符串：\"函数名称(参数类型1, 参数类型2, 参数类型3,...)\", 在同一个合约中，不同的函数的函数签名是不一样的，所以合约中是用函数签名来区分函数的 方法id method id：就是函数签名的keccak256之后的前四个byte：bytes4(keccak256(\"函数名(参数类型1, 参数类型2, ...)\"))， 当selector和method id能匹配上时，就会调用对应的函数 注意的点，int和uint在函数签名中要写为int256和uint256",
 			"version": 1
 		}
@@ -80,11 +214,11 @@
 	},
 	"sources": {
 		"contracts/SelectContract.sol": {
-			"keccak256": "0x1ff8497fa130a2a03556955525203ac90be5b9341eae29dfeb71c80b88f0b08d",
+			"keccak256": "0x848d6f12e9956dce87836aca8e4b6017bb7c7c8b407ba5a87e8219050ebf95b6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://43b5c826d93d15064e155608d767d3141308f2115166af8ed1c4d2e88ca15b6a",
-				"dweb:/ipfs/QmaqFoLERAmnWWtQrMGz18QwaxM6EPSKLcirVQQvJgkawm"
+				"bzz-raw://89827a990c36562345b082481501fa9c3f61fdf1625e44a84ff12e7e1e98a424",
+				"dweb:/ipfs/QmXc9YwYgnT21DoKzrj3Ktiec3AYPQQhQUwjjuZLLPFGWu"
 			]
 		}
 	},
