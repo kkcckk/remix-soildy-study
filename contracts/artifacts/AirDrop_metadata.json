@@ -1,0 +1,123 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "failTransferList",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable[]",
+						"name": "_addresses",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_amounts",
+						"type": "uint256[]"
+					}
+				],
+				"name": "mulitiTransferETH",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContract",
+						"type": "address"
+					},
+					{
+						"internalType": "address[]",
+						"name": "_addresses",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_amounts",
+						"type": "uint256[]"
+					}
+				],
+				"name": "multiTransferToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "关于在合约中函数的参数什么时候应该用memory，什么时候应该用calldata memory： 1. 当需要在函数中修改传递的参数时，应使用memory。 2. 当数据需要在函数内部被多次访问和操作时，使用memory更为合适。 3. 如果需要对传入的数据进行复杂计算或处理，通常会使用memory。 calldata： 1. 当函数参数只是被读取而不需要修改时，使用calldata可以节省Gas。 2. 特别适用于公共或外部函数中的数组或结构体参数，因为这种情况下calldata更加高效。",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/AirDrop.sol": "AirDrop"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AirDrop.sol": {
+			"keccak256": "0x34270a435637e2e7157a30a89ce86c4912018e9891752477a0eb074fa05ec98f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7580d380094b86e01a5484d9696293d165967ed3297d8606b58f9ca3998d628d",
+				"dweb:/ipfs/QmReTN5DFEqfyrbRGmAPujnMUhfzozXYPeymm2QTusm4N6"
+			]
+		},
+		"contracts/ERC20.sol": {
+			"keccak256": "0xfb49ee9ca6647a45f13c23a26f343ec9466040a26f3476dd26a72de7bcfa8957",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://33b76beeba41705362e4dadb04c01c8199da53d54f4c4782a2f6a61d6aaeb58f",
+				"dweb:/ipfs/QmauiFD4ctAURXK76eZqvxmP4TdhS6917ETSjm78RdBKNw"
+			]
+		},
+		"contracts/interface/IERC20.sol": {
+			"keccak256": "0xb3bd93fa9e0d2d33c84564486c4ae10b8e09ab505d7862599273d7cac8195cef",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e03d58aabce761a0c33a982224e7a2075583d4966037b70dfb5c2390723784a8",
+				"dweb:/ipfs/QmQrzWmwRYheDTPnHesCTJWDchAqJsqJbwDFaomiJvtLWL"
+			]
+		}
+	},
+	"version": 1
+}

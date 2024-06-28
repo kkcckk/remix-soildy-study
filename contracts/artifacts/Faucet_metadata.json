@@ -1,0 +1,124 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenContract_",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountAllowed",
+						"type": "uint256"
+					}
+				],
+				"name": "SendToken",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "amountAllowed",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "requestAddress",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "requestToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "1. 首先开发代币合约，上面已经开发完成 2. 之后再部署代币，获取代币的地址 3. 再开发代币水龙头合约 4. 部署的代币水龙头合约的时候，需要给构造器传入第2步部署好的代币地址 5. 部署好代币水龙头之后，需要给这个代币水龙头转入一定的代币数量，所以使用代币.transfer(代币水龙头地址, 转账代币数量)进行转账 6. 之后就从这个代币水龙头中获取代币",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Faucet.sol": "Faucet"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Faucet.sol": {
+			"keccak256": "0xa30cb229c9aac5c0592e6c14768ffb5aa40eb3dc140f488b2e7ac7bafd2bad54",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f5c43279f84a769d1a7e1b8ab30655a31ceaecfd7098ed9f7c3a61e1e67b9169",
+				"dweb:/ipfs/QmaYyfBRJCUsZSbCXb3483TfUDenN19GvbnpxFDx8daSAY"
+			]
+		},
+		"contracts/interface/IERC20.sol": {
+			"keccak256": "0xb3bd93fa9e0d2d33c84564486c4ae10b8e09ab505d7862599273d7cac8195cef",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e03d58aabce761a0c33a982224e7a2075583d4966037b70dfb5c2390723784a8",
+				"dweb:/ipfs/QmQrzWmwRYheDTPnHesCTJWDchAqJsqJbwDFaomiJvtLWL"
+			]
+		}
+	},
+	"version": 1
+}
