@@ -86,4 +86,26 @@ contract AirDrop{
         4. 调用代币的approve函数给空投地址授权代币数量，即给空投合约地址转入对应的可用代币
         5. 开始发送代币，调用transferFrom()函数，使用代理地址进行转账
         6. 转账完成后，可以通过balancesOf进行查询余额
+
+    注意的点：
+        得弄明白msg.sender和address(this)之间的关系
+        目前来看，在airdrop合约中address(this)是空投合约的地址
+        msg.sender是调用合约的地址，两者还是有区别的
+
+        在remix中，我使用的是这个地址去部署erc20币的：0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+        得到的erc20币的地址是0xd9145CCE52D386f254917e481eB44e9943F39138，同时执行mint铸币：10000个
+
+        在使用这个地址去部署AirDrop合约：0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+        得到的AirDrop合约地址：0xf8e81D47203A594245E36C48e151709F0C19fBe8
+
+        两个合约部署完成之后，需要使用erc20代币去给AriDrop合约授权可以使用的代币，调用approve(AriDrop地址, 10000),
+        此时通过调用allowance，传入代币拥有者地址，即部署erc20时的地址：0x5B38Da6a701c568545dCfcB03FcB875f56beddC4，传入被委托者地址，即AirDrop地址：0xf8e81D47203A594245E36C48e151709F0C19fBe8，
+        可以看见可以使用的委托代币的数量是10000
+
+        AirDrop已经授权成功之后，开始发放空投，调用multiTransferToken，传入erc20地址：0xd9145CCE52D386f254917e481eB44e9943F39138，
+        传入地址数组["0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2","0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db"],
+        代币数量组[200,300]
+
+        发送成功后，通过balanceOf，依次输入["0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2","0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db"]两个地址，可以看见余额分别是200和300，
+        同时使用allowance查询owner：0x5B38Da6a701c568545dCfcB03FcB875f56beddC4和被授权地址：0xf8e81D47203A594245E36C48e151709F0C19fBe8，看见授权可用代币数量由10000-->9500
 */

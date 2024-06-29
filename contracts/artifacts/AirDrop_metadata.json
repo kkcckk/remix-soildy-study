@@ -95,11 +95,11 @@
 	},
 	"sources": {
 		"contracts/AirDrop.sol": {
-			"keccak256": "0x34270a435637e2e7157a30a89ce86c4912018e9891752477a0eb074fa05ec98f",
+			"keccak256": "0x91425b18948f71643f0bcbcfbfbbc14b6c73c389aeb9327a4383ed3b8b9cd724",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7580d380094b86e01a5484d9696293d165967ed3297d8606b58f9ca3998d628d",
-				"dweb:/ipfs/QmReTN5DFEqfyrbRGmAPujnMUhfzozXYPeymm2QTusm4N6"
+				"bzz-raw://f179bad87be78693eeee411df622a45cf4c05d5e9d2f2ee6e4aef0080f7ab8d7",
+				"dweb:/ipfs/QmUvWURhqfSEqD4RFFWK2mZPWkpZnGJouAwhRxpi4MNqgA"
 			]
 		},
 		"contracts/ERC20.sol": {

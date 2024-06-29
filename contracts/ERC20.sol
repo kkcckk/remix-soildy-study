@@ -4,7 +4,7 @@ pragma solidity ^0.8.20;
 import "./interface/IERC20.sol";
 
 
-// 简化版本ERC20
+// 简化版本ERC20，是同质化货币
 contract ERC20 is IERC20 {
     // 用来存放地址的余额
     mapping(address => uint256) public override balanceOf;
