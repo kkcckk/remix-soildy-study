@@ -109,7 +109,7 @@ contract ERC721 is IERC721, IERC721Metadata {
     }
 
     // 查询spender地址是否可以操作tokenId，spender在进行转账的时候就是msg.sender调用者
-    function _isApprovedOrOwner(address owner, address spender, uint tokenId) private returns(bool) {
+    function _isApprovedOrOwner(address owner, address spender, uint tokenId) private view returns(bool) {
         return owner == spender || _operatorApprovals[owner][spender] || _tokenIdApprovals[tokenId] == spender;
     }
 
@@ -140,4 +140,94 @@ contract ERC721 is IERC721, IERC721Metadata {
         _approve(to, address(0), tokenId);
     }
 
+    // 安全转载的实际逻辑实现
+    function _safeTransferFrom(address owner, address from, address to, uint tokenId, bytes memory _data) private {
+        _transfer(owner, from, to, tokenId);
+        _checkOnERC721Received(from, to, tokenId, _data);
+    }
+
+    // 进行安全转账
+    function safeTransferFrom(address from, address to, uint tokenId, bytes memory data) public override {
+        // 找出owner
+        address owner = _owners[tokenId];
+        require(_isApprovedOrOwner(owner, msg.sender, tokenId), "not owner or approved");
+
+        _safeTransferFrom(owner, from, to, tokenId, data);
+    }
+
+    // 重载函数
+    function safeTransferFrom(address from, address to, uint tokenId) external override {
+        safeTransferFrom(from, to, tokenId, "");
+    }
+
+    // 铸币
+    function _mint(address to, uint tokenId) internal virtual {
+        // to不能是address(0)
+        require(to != address(0), "mint to zero address");
+        // tokenId不能是已经存在的
+        require(_owners[tokenId] == address(0), "token already minted");
+
+        _balances[to] += 1;
+        _owners[tokenId] = to;
+
+        emit Transfer(address(0), to, tokenId);
+    }
+
+    // 销毁币
+    function _burn(uint tokenId) internal virtual {
+        address owner = _owners[tokenId];
+        
+        // 首先币必须存在，即有主人，同时，只有币的拥有者才能销毁币
+        require(msg.sender == owner, "token don't be minted.");
+        
+        // 余额-1
+        _balances[owner] -= 1;
+
+        // tokenId的地址指向address(0)
+        _owners[tokenId] = address(0);
+
+        // tokenId授权的地址指向address(0)
+        _approve(address(0), address(0), tokenId);
+
+        emit Transfer(owner, address(0), tokenId);
+    }
+
+    // 进行安全检查，检查接收方是否实现了IERC721Receiver，并且重写了函数
+    // 转账地址to可能是合约地址，也可能不是合约地址，如果是合约地址，就必须判断是否实现了IERC721Receiver接口，并重写了onERC721Received函数
+    function _checkOnERC721Received(address from, address to, uint256 tokenId, bytes memory data) private {
+        if (to.code.length > 0) {
+            try IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, data) returns(bytes4 retval) {
+                // 判断选择器是否一致
+                if (retval != IERC721Receiver.onERC721Received.selector) {
+                    revert ERC721InvalidReceiver(to);
+                }
+            } catch (bytes memory reason) {
+                if (reason.length == 0) {
+                    revert ERC721InvalidReceiver(to);
+                } else {
+                    assembly {
+                        revert(add(32, reason), mload(reason))
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 实现IERC721Metadata的tokenURI函数，查询metadata。
+     */
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        require(_owners[tokenId] != address(0), "Token Not Exist");
+
+        string memory baseURI = _baseURI();
+        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString())) : "";
+    }
+
+    /**
+     * 计算{tokenURI}的BaseURI，tokenURI就是把baseURI和tokenId拼接在一起，需要开发重写。
+     * BAYC的baseURI为ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/ 
+     */
+    function _baseURI() internal view virtual returns (string memory) {
+        return "";
+    }
 }
