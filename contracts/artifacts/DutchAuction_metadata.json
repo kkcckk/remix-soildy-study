@@ -471,6 +471,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "baseURI",
+						"type": "string"
+					}
+				],
+				"name": "setBaseURI",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes4",
 						"name": "interfaceId",
 						"type": "bytes4"
@@ -567,6 +580,13 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawMoney",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -606,6 +626,7 @@
 					"notice": "实现IERC721Metadata的tokenURI函数，查询metadata。"
 				}
 			},
+			"notice": "荷兰拍卖，竞拍开始的价格是最高的，后面每隔一段时间，价格会降低， 其实这个拍卖内容不是拍卖NFT，而是拍卖制作NFT的价格，时间越后，制作的价格越低",
 			"version": 1
 		}
 	},
@@ -626,11 +647,11 @@
 	},
 	"sources": {
 		"contracts/DutchAuction.sol": {
-			"keccak256": "0xaf78c3edf814a61b8f8b583d71740d188f089aff6539b125b66ef744867e14f5",
+			"keccak256": "0xce2ff2fce4b7a8c339606fd30884850c11903a22ad1c039236e266e49e4ada61",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://26a0ab3042587bd88c1888c65d3b78ae74e9ad14addff091e2225a9f517191a3",
-				"dweb:/ipfs/Qmc7tUoezRonyM1SbbXuzNmiwBRT6Ef2neyHXAmgSEJpu1"
+				"bzz-raw://0d40777a35d904cc8a74e5b630ebdd9edee688273cfa7538e53ebf30d45a83fa",
+				"dweb:/ipfs/QmXMfBFvj6NVCiPN89oLRq1ghm2cY5Q1G47qHFMNA5zXJd"
 			]
 		},
 		"contracts/ERC721.sol": {
