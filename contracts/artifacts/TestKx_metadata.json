@@ -17,6 +17,19 @@
 				],
 				"stateMutability": "pure",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testAdd",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "c",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -47,11 +60,11 @@
 	},
 	"sources": {
 		"contracts/TestKx.sol": {
-			"keccak256": "0x94f80435b34df4305ec22db9d8c1caa2d41b9d37d005b0f0130e35506f6e54c9",
+			"keccak256": "0x26591257aa00bc1c3ec653d15ec02ba262d51be060c83c76b3f3bbcf696ddc0d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://cab9ac23f361a5680889044fdf7a05074e572897bef138428b7744fb5f1c2cec",
-				"dweb:/ipfs/QmZjLfx1T16jz8BSi6hNQYH1gMAkTMgpZs6M5YJbfRSd6r"
+				"bzz-raw://4d6281d542e56ba574f9d5fce4924e529f1642834acf1a8675bd5f5aae55c6ba",
+				"dweb:/ipfs/QmeteqshDUsD8mdotDtKamDLK1Ws7oG7HKvLGzPfEiojwu"
 			]
 		},
 		"contracts/interface/IERC721Metadata.sol": {

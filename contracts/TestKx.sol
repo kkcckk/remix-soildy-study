@@ -7,4 +7,10 @@ contract TestKx {
     function calcSelector() public pure returns(bytes4) {
         return bytes4(IERC721Metadata.name.selector ^ IERC721Metadata.symbol.selector ^ IERC721Metadata.tokenURI.selector);
     }
+
+    function testAdd() public pure returns(string memory c) {
+        assembly {
+            c := add("a", "0x20")
+        }
+    }
 }
