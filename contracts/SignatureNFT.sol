@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
+import "./ERC721.sol";
+
 /**
     数字签名步骤
     1. 先对数据进行哈希，使用keccak256函数
@@ -18,7 +20,7 @@ pragma solidity ^0.8.21;
 
 library ECDSA {
      // 验证签名，参数：哈希之后的消息（含有以太消息头部），签名，公钥（签名地址）
-     function _verify(bytes32 _msgHash, bytes memory _signature, address _signer) internal pure returns(bool) {
+     function verify(bytes32 _msgHash, bytes memory _signature, address _signer) internal pure returns(bool) {
         return recoverSign(_msgHash, _signature) == _signer;
      }
 
@@ -30,7 +32,7 @@ library ECDSA {
         // 使用rsv
         bytes32 r;
         bytes32 s;
-        bytes1 v;
+        uint8 v;
 
         // 使用汇编获取r、s、v的值
         assembly {
@@ -46,4 +48,48 @@ library ECDSA {
      function toEthSignedMessageHash(bytes32 hash) public pure returns(bytes32) {
         return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash));
      }
+}
+
+
+// 签名
+contract SignatureNFT is ERC721 {
+   // 签名地址, 一般是派送方，校验的地址
+   address public immutable signer;
+
+   // 记录已经铸币的地址
+   mapping (address => bool) public mintedAddress;
+
+   constructor(string memory _name, string memory _symbol, address _signer) ERC721(_name, _symbol) {
+      signer = _signer;
+   }
+
+   // 首先获取数据的获取数据hash
+   function getMessageHash(address _account, uint256 _tokenId) public pure returns(bytes32) {
+      return keccak256(abi.encodePacked(_account, _tokenId));
+   }
+
+   // 之后使用以太消息头再和真实消息进行hash
+   function toEthSignedMessageHash(bytes32 messageHash) public pure returns(bytes32) {
+      return ECDSA.toEthSignedMessageHash(messageHash);
+   }
+
+   // 验证签名
+   function verity(bytes32 _msgHash, bytes memory _signature) public view returns(bool) {
+      return ECDSA.verify(_msgHash, _signature, signer);
+   }
+
+   // 进行验证签名
+   function mint(address _account, uint256 _tokenId, bytes memory _signature) external {
+      // 使用以太头哈希之后的数据
+      bytes32 ethMessageHash = toEthSignedMessageHash(getMessageHash(_account, _tokenId));
+
+      // 验证
+      require(verity(ethMessageHash, _signature), "Invalid signature");
+
+      // 判断是否铸币了已经
+      require(!mintedAddress[_account], "The account has already minted");
+
+      _mint(_account, _tokenId);
+      mintedAddress[_account]=true;
+   }
 }

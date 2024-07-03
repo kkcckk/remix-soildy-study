@@ -9,6 +9,37 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getStudent",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "score",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Mapping.Student",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -19,6 +50,30 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "studentMapping",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "score",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -70,6 +125,7 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {},
+			"notice": "在映射中，如果是一个mapping(address => 结构体)， 如果查询一个不存在的key，那么返回的是一个拥有默认值的结构体",
 			"version": 1
 		}
 	},
@@ -90,11 +146,11 @@
 	},
 	"sources": {
 		"contracts/Mapping.sol": {
-			"keccak256": "0xa949809378fd153c476c54ef7824d7e54a8fc6003ff054af58fb7670ecbc1649",
+			"keccak256": "0x50543a72d61acbcdb07dafc4a1834bdd033a45094153f500cf27846b133e614c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://089c0b5d86e52eac8f1c60dcd63910792ebb021bd2c6e8bd665495101d10ecc4",
-				"dweb:/ipfs/QmWWoVMmL7P6g35J7ycmCwSshKpNpGPtwVaGRXx3kS912W"
+				"bzz-raw://f7b660e9fb607e246c95b8105486ab9d25ce40e6fd2e838e83fc34521282d938",
+				"dweb:/ipfs/QmaZ8jskfWK4KXC93RLSqdE322kJSEWzN86dHZuPBR76fj"
 			]
 		}
 	},
