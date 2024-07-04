@@ -3,6 +3,7 @@ pragma solidity ^0.8.20;
 
 import "./interface/IERC721Receiver.sol";
 import "./interface/IERC721.sol";
+import "./KXERC721.sol";
 
 /**
     NFT交易所，因为要接收NFT，所以必须实现IERC721Receiver接口，流程：
@@ -112,15 +113,13 @@ contract NFTSwap is IERC721Receiver {
     }
 
     // 买NFT
-    function purchase(address _nft, uint256 tokenId) payable public {
+    function purchase(address _nft, uint256 tokenId) public payable {
         // 判断购买的tokenId是否上架了
         IERC721 nft = IERC721(_nft);
         require(nft.ownerOf(tokenId) == address(this), "The tokenId is not listed");
 
-        // 获取订单
+        // 获取订单,比较价格
         Order storage order = nftList[_nft][tokenId];
-
-        // 比较价格
         require(order.price <= msg.value, "Your price is less than the price of tokenId");
 
         // 进行nft转账
@@ -137,15 +136,8 @@ contract NFTSwap is IERC721Receiver {
         //     }
         // }
 
-        emit Log("Start to transfer to order.owner", order.owner);
         payable(order.owner).transfer(order.price);
-        emit Log("End to transfer to order.owner", order.owner);
-
-        if (order.price - msg.value < 0) {
-            emit Log("Start to transfer to msg.sender", msg.sender);
-            payable(msg.sender).transfer(msg.value - order.price);
-            emit Log("End to transfer to msg.sender", msg.sender);
-        }
+        payable(msg.sender).transfer(msg.value - order.price);
 
         // 销毁对应的订单
         delete nftList[_nft][tokenId];
