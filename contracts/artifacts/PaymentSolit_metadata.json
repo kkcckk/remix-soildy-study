@@ -231,11 +231,11 @@
 	},
 	"sources": {
 		"contracts/PaymentSplit.sol": {
-			"keccak256": "0xccff368fdb15b99038c54336fba27d57298b5664bac168c066dd5ca421d099f8",
+			"keccak256": "0x0b1c217e66fd01a346cc594330e44433195fff0114fcfd4eb30ba635576a16fb",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0aaee0fec8d57008f5cde82a120238cce498ff4ccdc739c51d8109cb95af7a3e",
-				"dweb:/ipfs/QmZTYBm226u99ADqLiS28qA8HyT4UaMGcBVoyy9rQHVzQ1"
+				"bzz-raw://6cb2fd376553092d874bb53bcaa27bbbb913cad856f1895fba74e9b1fb22a44a",
+				"dweb:/ipfs/QmaS4PMfJfi8pQSWJYWgaipeAYexxNj21d6ogBr6bgCdsY"
 			]
 		}
 	},

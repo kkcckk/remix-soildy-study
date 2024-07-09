@@ -35,7 +35,7 @@ contract PaymentSolit {
         require(_payees.length > 0, "no payees");
 
         // 开始初始化
-        for (uint256 i = 0; i < payees.length; i++) {
+        for (uint256 i = 0; i < _payees.length; i++) {
             _addPayee(_payees[i], _shares[i]);
         }
     }
