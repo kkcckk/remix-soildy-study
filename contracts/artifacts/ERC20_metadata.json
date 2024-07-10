@@ -291,7 +291,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Faucet.sol": "ERC20"
+			"contracts/ERC20.sol": "ERC20"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -305,12 +305,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Faucet.sol": {
-			"keccak256": "0xa30cb229c9aac5c0592e6c14768ffb5aa40eb3dc140f488b2e7ac7bafd2bad54",
+		"contracts/ERC20.sol": {
+			"keccak256": "0x6912fcaee437a04bad1f2b2c16c5b075e7a01bbd959fe30985fb9844521c1bd6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f5c43279f84a769d1a7e1b8ab30655a31ceaecfd7098ed9f7c3a61e1e67b9169",
-				"dweb:/ipfs/QmaYyfBRJCUsZSbCXb3483TfUDenN19GvbnpxFDx8daSAY"
+				"bzz-raw://ba5985cb035d3a84267ce5021f9a82b95077bb554e8fb85a2f58ab54476069d9",
+				"dweb:/ipfs/QmUmH8etJtpGatHwLtZ4EVdtp4fpQFmgMMi6WL7jp39CMj"
 			]
 		},
 		"contracts/interface/IERC20.sol": {
