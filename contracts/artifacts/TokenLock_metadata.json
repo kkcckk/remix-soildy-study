@@ -1,0 +1,205 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "beneficary_",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "token_",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lockTimestamp_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "beneficary",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "releasedTimestamp",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "releasedAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "Release",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "beneficary",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "startTimestamp",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "lockTimestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "TokenLockStart",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "beneficary",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lockTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "release",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "startTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "代币锁：TokenLocker 定义：用户将一定量的代币转入合约中，换取等价值的lp代币，到一定时间后，可以通过lp代币换回之前代币 lp（liquid provider token）：是dex去中心化交易所或流动性池中表示流动性提供者的一种代币。 可以理解为一个集资，有很多钱，然后每个人付了钱的人都会有一个表示相应金额的证明牌子。 一个简单的代币锁合约结构： 事件： 锁仓开始事件：记录了代币受益人地址、代币地址、开始时间、结束时间 释放代币事件：记录了代币受益人地址、代币地址、释放时间、释放数量 event TokenLockStart(address indexed beneficary, address indexed token, uint256 startTimestamp, uint256 endtTimestamp); event Release(address indexed beneficary, address indexed token, uint256 releasedTimestamp, uint256 releasedAmount); 状态变量： 受益人地址：address public immutable beneficary; 代币地址：address public immutable token; 开始时间：uint256 public immutable startTimestamp;，一般设置为区块时间戳 锁仓时间：uint256 public immutable lockTimestamp; 函数： 构造函数，初始化状态变量 释放代币",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/TokenLocker.sol": "TokenLock"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ERC20.sol": {
+			"keccak256": "0x6912fcaee437a04bad1f2b2c16c5b075e7a01bbd959fe30985fb9844521c1bd6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ba5985cb035d3a84267ce5021f9a82b95077bb554e8fb85a2f58ab54476069d9",
+				"dweb:/ipfs/QmUmH8etJtpGatHwLtZ4EVdtp4fpQFmgMMi6WL7jp39CMj"
+			]
+		},
+		"contracts/TokenLocker.sol": {
+			"keccak256": "0x8d0776670d9d92bd6e7c6e0a3a76d4605ad37660adce8d8b2656675b5871c20f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ba9ed190dca02facf089140182d0c5839731cb1864de26286326a51a3c32c486",
+				"dweb:/ipfs/QmYYzhThSaiv5SMitsVFNQ8vNBrUqo5H5r54zw3meAe1Jd"
+			]
+		},
+		"contracts/interface/IERC20.sol": {
+			"keccak256": "0xb3bd93fa9e0d2d33c84564486c4ae10b8e09ab505d7862599273d7cac8195cef",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e03d58aabce761a0c33a982224e7a2075583d4966037b70dfb5c2390723784a8",
+				"dweb:/ipfs/QmQrzWmwRYheDTPnHesCTJWDchAqJsqJbwDFaomiJvtLWL"
+			]
+		}
+	},
+	"version": 1
+}
