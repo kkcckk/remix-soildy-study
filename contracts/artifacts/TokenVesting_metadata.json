@@ -150,7 +150,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/TokenLocker.sol": "TokenVesting"
+			"contracts/TokenVesting.sol": "TokenVesting"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -172,12 +172,12 @@
 				"dweb:/ipfs/QmUmH8etJtpGatHwLtZ4EVdtp4fpQFmgMMi6WL7jp39CMj"
 			]
 		},
-		"contracts/TokenLocker.sol": {
-			"keccak256": "0xcf5ee73c5159e214adce9ceb13d55c36b15922feedcda75b358189e9c7807eee",
+		"contracts/TokenVesting.sol": {
+			"keccak256": "0x0e2238f3dc837ea2864e6a2c8d59f1eb0d021fcbb2b5cf9393fffbeeb6c68afd",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://af6541586716f629965c9a054323348905cdc1900ec7675fba75eb55cfd3805f",
-				"dweb:/ipfs/QmYya6eAusMkZsyaUT3TRGZ8VgPWdSCLV7wwmG4NXiHMiu"
+				"bzz-raw://89cd2b80972ce6e5a3d80fe3869f2036d3c810419386d822d667cf91510f9483",
+				"dweb:/ipfs/QmcvMprUEqksJ6YLhxjpi23jN969BfiqCKZ2wyrNiTYpWA"
 			]
 		},
 		"contracts/interface/IERC20.sol": {

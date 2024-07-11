@@ -1,69 +1,85 @@
 // SPDX-License-Identifier: MIT
-// wtf.academy
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.21;
 
 import "./ERC20.sol";
 
+
 /**
- * @title ERC20代币线性释放
- * @dev 这个合约会将ERC20代币线性释放给给受益人`_beneficiary`。
- * 释放的代币可以是一种，也可以是多种。释放周期由起始时间`_start`和时长`_duration`定义。
- * 所有转到这个合约上的代币都会遵循同样的线性释放周期，并且需要受益人调用`release()`函数提取。
- * 合约是从OpenZeppelin的VestingWallet简化而来。
- */
+    使用线性的方式，每过一定时间，在归属期范围内，释放一定数量的代币
+    
+    使用该合约有个前提是，已知是代币的地址，同时该合约是保存了一定数据量的代币的，入erc20，是可以通过erc.balanceOf(线性合约地址)去查询的
+
+    一共有四个属性，在合约的构造函数中，会对数据进行初始化，初始化之后，数据不能再被修改：
+        收益地址：beneficiary
+        起始时间：startTime，一般使用block.timstamp
+        时间间隔：duration
+        上面三个参数使用immutable修饰，只允许修改一次
+        ===================
+        代币地址与代币已释放数量映射：tokenReleased
+
+    三个函数：
+        构造函数：初始化三个参数
+        释放代币：受益人可以主动调用这个函数，并将一定数据量的代币转入受益人地址
+        计算可释放地址：通过计算公式计算出可以释放的代币的数量
+
+    简化版的线性释放代码逻辑，详细内容请见：
+    https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/finance/VestingWallet.sol
+*/
+
 contract TokenVesting {
-    // 事件
-    event ERC20Released(address indexed token, uint256 amount); // 提币事件
+    // 释放代币的事件
+    event TokenReleased(address indexed token, uint256 amount);
 
-    // 状态变量
-    mapping(address => uint256) public erc20Released; // 代币地址->释放数量的映射，记录受益人已领取的代币数量
-    address public immutable beneficiary; // 受益人地址
-    uint256 public immutable start; // 归属期起始时间戳
-    uint256 public immutable duration; // 归属期 (秒)
+    // 受益人地址
+    address public immutable beneficary;
+    // 开始时间
+    uint256 public immutable startTime;
+    // 时间间隔
+    uint256 public immutable duration;
 
-    /**
-     * @dev 初始化受益人地址，释放周期(秒), 起始时间戳(当前区块链时间戳)
-     */
-    constructor(
-        address beneficiaryAddress,
-        uint256 durationSeconds
-    ) {
-        require(beneficiaryAddress != address(0), "VestingWallet: beneficiary is zero address");
-        beneficiary = beneficiaryAddress;
-        start = block.timestamp;
-        duration = durationSeconds;
+    // 已释放代币与受益人映射
+    mapping (address => uint256) public tokenReleased;
+
+    // 构造器
+    constructor(address beneficary_, uint256 duration_) {
+        beneficary = beneficary_;
+        startTime = block.timestamp;
+        duration = duration_;
     }
 
-    /**
-     * @dev 受益人提取已释放的代币。
-     * 调用vestedAmount()函数计算可提取的代币数量，然后transfer给受益人。
-     * 释放 {ERC20Released} 事件.
-     */
+    // 释放代币,参数token为代币的地址
     function release(address token) public {
-        // 调用vestedAmount()函数计算可提取的代币数量
-        uint256 releasable = vestedAmount(token, uint256(block.timestamp)) - erc20Released[token];
-        // 更新已释放代币数量   
-        erc20Released[token] += releasable; 
-        // 转代币给受益人
-        emit ERC20Released(token, releasable);
-        IERC20(token).transfer(beneficiary, releasable);
+        // 计算可以释放的代币
+        uint256 releasedAmount = vestedAmount(token, uint256(block.timestamp));
+
+        // 计算用户可获取的代币
+        uint256 beneficaryAmount = releasedAmount - tokenReleased[token];
+
+        // 更新token代币已经释放的代币数量
+        tokenReleased[token] += beneficaryAmount;
+
+        // 转给用户
+        IERC20(token).transfer(beneficary, beneficaryAmount);
+
+        //触发事件
+        emit TokenReleased(token, beneficaryAmount);
     }
 
-    /**
-     * @dev 根据线性释放公式，计算已经释放的数量。开发者可以通过修改这个函数，自定义释放方式。
-     * @param token: 代币地址
-     * @param timestamp: 查询的时间戳
-     */
-    function vestedAmount(address token, uint256 timestamp) public view returns (uint256) {
-        // 合约里总共收到了多少代币（当前余额 + 已经提取）
-        uint256 totalAllocation = IERC20(token).balanceOf(address(this)) + erc20Released[token];
-        // 根据线性释放公式，计算已经释放的数量
-        if (timestamp < start) {
+    // 计算可释放代币数量
+    function vestedAmount(address token, uint256 time) public view virtual returns(uint256) {
+        // 查询该合约一共能释放的代币数量
+        uint256 totalAmount = IERC20(token).balanceOf(address(this)) + tokenReleased[token];
+
+        // 通过时间进行判断是否释放代币，释放多少代币
+        if (time < startTime) {
+            // 如果还没到时间，释放0个代币
             return 0;
-        } else if (timestamp > start + duration) {
-            return totalAllocation;
+        } else if (time > startTime + duration) {
+            // 如果超过了起始时间+时间间隔，说明可以全部释放代币
+            return totalAmount;
         } else {
-            return (totalAllocation * (timestamp - start)) / duration;
+            // 否则按照时间比例去释放
+            return (totalAmount * (time - startTime)) / duration;
         }
     }
 }
