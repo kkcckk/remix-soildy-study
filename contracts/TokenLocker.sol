@@ -3,66 +3,83 @@ pragma solidity ^0.8.21;
 
 import "./ERC20.sol";
 
+
 /**
-    代币锁：TokenLocker
-    定义：用户将一定量的代币转入合约中，换取等价值的lp代币，到一定时间后，可以通过lp代币换回之前代币
-    lp（liquid provider token）：是dex去中心化交易所或流动性池中表示流动性提供者的一种代币。
-    可以理解为一个集资，有很多钱，然后每个人付了钱的人都会有一个表示相应金额的证明牌子。
+    使用线性的方式，每过一定时间，在归属期范围内，释放一定数量的代币
+    
+    使用该合约有个前提是，已知是代币的地址，同时该合约是保存了一定数据量的代币的，入erc20，是可以通过erc.balanceOf(线性合约地址)去查询的
 
-    一个简单的代币锁合约结构：
-        事件：
-            锁仓开始事件：记录了代币受益人地址、代币地址、开始时间、结束时间
-            释放代币事件：记录了代币受益人地址、代币地址、释放时间、释放数量
+    一共有四个属性，在合约的构造函数中，会对数据进行初始化，初始化之后，数据不能再被修改：
+        收益地址：beneficiary
+        起始时间：startTime，一般使用block.timstamp
+        时间间隔：duration
+        上面三个参数使用immutable修饰，只允许修改一次
+        ===================
+        代币地址与代币已释放数量映射：tokenReleased
 
-            event TokenLockStart(address indexed beneficary, address indexed token, uint256 startTimestamp, uint256 endtTimestamp);
-            event Release(address indexed beneficary, address indexed token, uint256 releasedTimestamp, uint256 releasedAmount);
+    三个函数：
+        构造函数：初始化三个参数
+        释放代币：受益人可以主动调用这个函数，并将一定数据量的代币转入受益人地址
+        计算可释放地址：通过计算公式计算出可以释放的代币的数量
 
-        状态变量：
-            受益人地址：address public immutable beneficary;
-            代币地址：address public immutable token;
-            开始时间：uint256 public immutable startTimestamp;，一般设置为区块时间戳
-            锁仓时间：uint256 public immutable lockTimestamp;
-
-        函数：
-            构造函数，初始化状态变量
-            释放代币
+    简化版的线性释放代码逻辑，详细内容请见：
+    https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/finance/VestingWallet.sol
 */
 
+contract TokenVesting {
+    // 释放代币的事件
+    event TokenReleased(address indexed token, uint256 amount);
 
-contract TokenLock {
+    // 受益人地址
     address public immutable beneficary;
-    address public immutable token;
-    uint256 public immutable startTimestamp;
-    uint256 public immutable lockTimestamp;
+    // 开始时间
+    uint256 public immutable startTime;
+    // 时间间隔
+    uint256 public immutable duration;
 
-    event TokenLockStart(address indexed beneficary, address indexed token, uint256 startTimestamp, uint256 lockTimestamp);
-    event Release(address indexed beneficary, address indexed token, uint256 releasedTimestamp, uint256 releasedAmount);
+    // 已释放代币与受益人映射
+    mapping (address => uint256) public tokenReleased;
 
-
-    constructor(address beneficary_, address token_, uint256 lockTimestamp_) {
-        require(beneficary_ != address(0), "beneficary can't be zero address.");
-        require(lockTimestamp_ > 0, "lock timestamp must be greater then zero.");
-
+    // 构造器
+    constructor(address beneficary_, uint256 duration_) {
         beneficary = beneficary_;
-        token = token_;
-        startTimestamp =  block.timestamp;
-        lockTimestamp = lockTimestamp_;
-
-        emit TokenLockStart(beneficary, token, startTimestamp, lockTimestamp);
+        startTime = block.timestamp;
+        duration = duration_;
     }
 
-    // 释放函数
-    function release() public {
-        require(block.timestamp > startTimestamp + lockTimestamp, "The time to unlock the token has not yet arrived.");
+    // 释放代币,参数token为代币的地址
+    function release(address token) public {
+        // 计算可以释放的代币
+        uint256 releasedAmount = vestedAmount(token, uint256(block.timestamp));
 
-        // 使用erc代币进行转账
-        // 代币的余额必须大于0
-        IERC20 e20 = IERC20(token);
-        uint256 balance = e20.balanceOf(address(this));
-        require(balance > 0, "insufficient balance");
+        // 计算用户可获取的代币
+        uint256 beneficaryAmount = releasedAmount - tokenReleased[token];
 
-        e20.transfer(beneficary, balance);
+        // 更新token代币已经释放的代币数量
+        tokenReleased[token] += beneficaryAmount;
 
-        emit Release(beneficary, token, block.timestamp, balance);
+        // 转给用户
+        // IERC20(token).transfer(beneficary, beneficaryAmount);
+
+        //触发事件
+        emit TokenReleased(token, beneficaryAmount);
+    }
+
+    // 计算可释放代币数量
+    function vestedAmount(address token, uint256 time) public view virtual returns(uint256) {
+        // 查询该合约一共能释放的代币数量
+        uint256 totalAmount = IERC20(token).balanceOf(address(this)) + tokenReleased[token];
+
+        // 通过时间进行判断是否释放代币，释放多少代币
+        if (time < startTime) {
+            // 如果还没到时间，释放0个代币
+            return 0;
+        } else if (time > startTime + duration) {
+            // 如果超过了起始时间+时间间隔，说明可以全部释放代币
+            return totalAmount;
+        } else {
+            // 否则按照时间比例去释放
+            return (totalAmount * (time - startTime)) / duration;
+        }
     }
 }

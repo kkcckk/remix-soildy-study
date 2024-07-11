@@ -9,12 +9,12 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "beneficiaryAddress",
+						"name": "beneficary_",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "durationSeconds",
+						"name": "duration_",
 						"type": "uint256"
 					}
 				],
@@ -37,12 +37,12 @@
 						"type": "uint256"
 					}
 				],
-				"name": "ERC20Released",
+				"name": "TokenReleased",
 				"type": "event"
 			},
 			{
 				"inputs": [],
-				"name": "beneficiary",
+				"name": "beneficary",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -70,11 +70,18 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "token",
 						"type": "address"
 					}
 				],
-				"name": "erc20Released",
+				"name": "release",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "startTime",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -89,18 +96,11 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "token",
+						"name": "",
 						"type": "address"
 					}
 				],
-				"name": "release",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "start",
+				"name": "tokenReleased",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -120,7 +120,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "timestamp",
+						"name": "time",
 						"type": "uint256"
 					}
 				],
@@ -137,35 +137,20 @@
 			}
 		],
 		"devdoc": {
-			"details": "这个合约会将ERC20代币线性释放给给受益人`_beneficiary`。 释放的代币可以是一种，也可以是多种。释放周期由起始时间`_start`和时长`_duration`定义。 所有转到这个合约上的代币都会遵循同样的线性释放周期，并且需要受益人调用`release()`函数提取。 合约是从OpenZeppelin的VestingWallet简化而来。",
 			"kind": "dev",
-			"methods": {
-				"constructor": {
-					"details": "初始化受益人地址，释放周期(秒), 起始时间戳(当前区块链时间戳)"
-				},
-				"release(address)": {
-					"details": "受益人提取已释放的代币。 调用vestedAmount()函数计算可提取的代币数量，然后transfer给受益人。 释放 {ERC20Released} 事件."
-				},
-				"vestedAmount(address,uint256)": {
-					"details": "根据线性释放公式，计算已经释放的数量。开发者可以通过修改这个函数，自定义释放方式。",
-					"params": {
-						"timestamp": ": 查询的时间戳",
-						"token": ": 代币地址"
-					}
-				}
-			},
-			"title": "ERC20代币线性释放",
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
 			"methods": {},
+			"notice": "使用线性的方式，每过一定时间，在归属期范围内，释放一定数量的代币 使用该合约有个前提是，已知是代币的地址，同时该合约是保存了一定数据量的代币的，入erc20，是可以通过erc.balanceOf(线性合约地址)去查询的 一共有四个属性，在合约的构造函数中，会对数据进行初始化，初始化之后，数据不能再被修改： 收益地址：beneficiary 起始时间：startTime，一般使用block.timstamp 时间间隔：duration 上面三个参数使用immutable修饰，只允许修改一次 =================== 代币地址与代币已释放数量映射：tokenReleased 三个函数： 构造函数：初始化三个参数 释放代币：受益人可以主动调用这个函数，并将一定数据量的代币转入受益人地址 计算可释放地址：通过计算公式计算出可以释放的代币的数量 简化版的线性释放代码逻辑，详细内容请见： https://github.com/OpenZeppelin/openzeppelin-contracts/blob/4a9cc8b4918ef3736229a5cc5a310bdc17bf759f/contracts/finance/VestingWallet.sol",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/TokenVesting.sol": "TokenVesting"
+			"contracts/TokenLocker.sol": "TokenVesting"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -187,12 +172,12 @@
 				"dweb:/ipfs/QmUmH8etJtpGatHwLtZ4EVdtp4fpQFmgMMi6WL7jp39CMj"
 			]
 		},
-		"contracts/TokenVesting.sol": {
-			"keccak256": "0x3cf24a2f9b6f86bab459ef8cdd4499ca1e078601b26cacbe30715c1e6e0060b8",
+		"contracts/TokenLocker.sol": {
+			"keccak256": "0xcf5ee73c5159e214adce9ceb13d55c36b15922feedcda75b358189e9c7807eee",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3f3cdf7ebd846d205e069088ecdaf6923c02ead2ead87dcd597dc96129ce16cc",
-				"dweb:/ipfs/QmZxd1tC2SZLjNjCmxAtvtt7o99dgwH4TrUbSirKzDd2yG"
+				"bzz-raw://af6541586716f629965c9a054323348905cdc1900ec7675fba75eb55cfd3805f",
+				"dweb:/ipfs/QmYya6eAusMkZsyaUT3TRGZ8VgPWdSCLV7wwmG4NXiHMiu"
 			]
 		},
 		"contracts/interface/IERC20.sol": {
