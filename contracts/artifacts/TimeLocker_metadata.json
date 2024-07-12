@@ -1,0 +1,46 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "时间锁：通过时间管控，对代币进行锁定，等时间到了可以安全的交易 也可以提前取消交易，但是只有管理员或者时间合约才能进行操作，时间合约默认是管理员的身份",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/TimeLocker.sol": "TimeLocker"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/TimeLocker.sol": {
+			"keccak256": "0x1b3bc9e36f86f8a24483f6f1452ba3a2c8f02af6f619a8c801175dd3d1b0d0d7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://34362a6f11b29b91df234744363937e6477394d7c1a2be1e668c3296e357712f",
+				"dweb:/ipfs/QmbsqQtc8bHSHotGVQQ5s39Cy3cu6nctjarei1huCj7tZe"
+			]
+		}
+	},
+	"version": 1
+}

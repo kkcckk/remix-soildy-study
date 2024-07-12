@@ -98,7 +98,7 @@
 					"notice": "第一种，传入合约地址，生成合约的引用，通过合约的引用调用其函数 用法：合约名称(合约地址).合约函数(函数参数);"
 				},
 				"setTransferEth(address,uint256)": {
-					"notice": "第四种，和调用call的方式一样 如果函数有payable修饰，表面是可以接收转账的，所以调用方式为 合约名称(合约地址).函数名称{value: 转账金额}(函数参数); 同意的，此合约的函数也得被payable修饰"
+					"notice": "第四种，和调用call的方式一样 如果函数有payable修饰，表明是可以接收转账的，所以调用方式为 合约名称(合约地址).函数名称{value: 转账金额}(函数参数); 同意的，此合约的函数也得被payable修饰"
 				}
 			},
 			"version": 1
@@ -121,11 +121,11 @@
 	},
 	"sources": {
 		"contracts/CallContract.sol": {
-			"keccak256": "0x46a25abab6de229cc346315277f8448207093c4846732c9ad4723dbb30787a45",
+			"keccak256": "0xb68fd7a110c03949a0f343b9b54da7f1e29993641980a0b81a135e0b7f17ee98",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a33c1cc5d45e05b5abc864d9142c97bfe4f8ea491be5825055822249725d0f23",
-				"dweb:/ipfs/Qmca8hb9YudCrTsHiftsr7fkPZbfp4WLVWpGr8YgJyQyGq"
+				"bzz-raw://ae1e3c7313897110570261354582f46406af54dbbb59c88ee34b0d28eb1927bd",
+				"dweb:/ipfs/QmXRKqNmpJPUFKwsSuefkLsvKHU2LYk1W9E1RY1vE1ko5n"
 			]
 		}
 	},
