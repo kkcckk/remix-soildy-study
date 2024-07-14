@@ -1,0 +1,75 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "implementation_",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "implementation",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "代理合约，可以用于合约升级，同时可以起到合约逻辑的复用功能，节省gas 代理合约会将数据存储和逻辑分开在不同的两个合约中，代理合约只保存逻辑合约的地址和状态变量， 如果逻辑出现问题了，修改后重新部署之后，只需要把代理合约中保存的逻辑合约的地址指向 新逻辑合约的地址就行了 使用合约的fallback函数进行delegatecall调用 使用代理合约和实现合约（逻辑合约）的注意事项 1. 状态变量声明顺序：代理合约和实现合约中的状态变量必须以相同的顺序声明。即使类型相同，但顺序不同也会导致错误 2. 代理合约和实现合约中相同位置的变量必须具有相同的类型。否则，变量的读取和写入操作会不一致。 3. 在使用可升级代理合约模式时，确保新版本的实现合约保持与旧版本相同的状态变量布局，或者进行适当的存储迁移。",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/ProxyContract.sol": "Proxy"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ProxyContract.sol": {
+			"keccak256": "0x1d4e1a6040c637e32ca85754a5229a1e62619f727b83043bdb630b7da325361e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6832d63d435593b2e301c68af8057f6e3ec7d6602acb94588677a42385d0c42c",
+				"dweb:/ipfs/QmSysshkUz34c7D2KzrDcEAaVkfKzLdQ55LnT1gne7JGjn"
+			]
+		}
+	},
+	"version": 1
+}
