@@ -1,10 +1,28 @@
 {
 	"compiler": {
-		"version": "0.8.19+commit.7dd6d404"
+		"version": "0.8.26+commit.8a97fa7a"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_age",
+						"type": "uint256"
+					}
+				],
+				"name": "createPerson",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
 			{
 				"inputs": [],
 				"name": "defaultNumber",
@@ -12,6 +30,49 @@
 					{
 						"internalType": "uint256",
 						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "listOfFavoriteNumbers",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "persons",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "age",
 						"type": "uint256"
 					}
 				],
@@ -47,7 +108,7 @@
 		"compilationTarget": {
 			"contracts/cyfrin updraft/SimpleStorage.sol": "SimpleStorage"
 		},
-		"evmVersion": "paris",
+		"evmVersion": "cancun",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -60,11 +121,11 @@
 	},
 	"sources": {
 		"contracts/cyfrin updraft/SimpleStorage.sol": {
-			"keccak256": "0x969f8c29a945307620aecb58ff8063052948aeac33091000abd40747aca7664b",
+			"keccak256": "0x13363285cfe9804f322369ccd757aaf4a5b39c6872d6c458e8665f5ca86b9f55",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a8cb0ad5f27b963c33fe82d9f64bc29825b966e0e968a7233ab02c3f5ceab324",
-				"dweb:/ipfs/QmcjGhf47Uy99Q6xmi52uQ6SRxAvxgTEgC9u2Munn3MWad"
+				"bzz-raw://f47130a4628472fbe7e396542e9950b833568605382ecc75a21e20f816693f73",
+				"dweb:/ipfs/QmRojUGxxHAH3WZx6Eca8KBu8x6tSSKVgGVBhZYgiLf35g"
 			]
 		}
 	},
