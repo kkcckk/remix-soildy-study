@@ -5,7 +5,7 @@ pragma solidity ^0.8.19;
 // import {SimpleStorage, SimpleStorage2} from "./SimpleStorage.sol";
 // 使用命名导入，合约文件中可能会有很多contract，所以导入时候指定合约名称
 // 花括号写几个合约名称就可以导入几个合约
-import {SimpleStorage} from "./SimpleStorage.sol";
+import {SimpleStorage} from "../section1/SimpleStorage.sol";
 
 contract StorageFactory {
     SimpleStorage[] public listOfSimpleStorageContracts;

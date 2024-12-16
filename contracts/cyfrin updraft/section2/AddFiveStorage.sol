@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.18;
 
-import {SimpleStorage} from "./SimpleStorage.sol";
+import {SimpleStorage} from "../section1/SimpleStorage.sol";
 
 // 继承
 contract AddFiveStorage is SimpleStorage {
