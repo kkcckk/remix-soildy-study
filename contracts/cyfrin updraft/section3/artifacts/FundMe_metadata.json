@@ -6,6 +6,25 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "funder",
+						"type": "address"
+					}
+				],
+				"name": "addressToAmountFunded",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountFunded",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "fund",
 				"outputs": [],
@@ -16,29 +35,16 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "ethAmount",
-						"type": "uint256"
-					}
-				],
-				"name": "getConversionRate",
-				"outputs": [
-					{
-						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getPrice",
+				"name": "funders",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -47,6 +53,19 @@
 			{
 				"inputs": [],
 				"name": "minimumUsd",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pr",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -101,11 +120,19 @@
 			]
 		},
 		"contracts/cyfrin updraft/section3/FundMe.sol": {
-			"keccak256": "0xb708dea092557ce0f52d2deabf9018fbea0c0edfd55aa1054306ce8d1fd38512",
+			"keccak256": "0xb8acdd7fd8302162f78bef8a47f1ed4f619e421a8af04235763d3a89c0886dae",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9d38c78f5c860c9e6620edb54706481cfdadeddce3912e01c25de00a421c6cb3",
-				"dweb:/ipfs/QmPhyMUxPJL7E441x2mTW9rFPGB2dT2eJSPsa2Et3YMEpY"
+				"bzz-raw://e74a3abe27c6d78c2a65fc32b5036a93bf738640c4a0739b0c4a732594878ab7",
+				"dweb:/ipfs/QmSDmKygKXkaazdg6BwP5z8wqSiEnEK5WofPRcuizPWfZx"
+			]
+		},
+		"contracts/cyfrin updraft/section3/librarys/PriceConverter.sol": {
+			"keccak256": "0x090189047c0cc31dada783896c6192d16bf99157ba9f709392a43fcd8b6ac759",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://20c13bc8d53641856555f437096f5badbe1b31afe8d6de71c14375d4689e5f49",
+				"dweb:/ipfs/QmVYcMvnwcg9jhdhZp8vo8rcVFdzsWZ2Yh15jT1giUapHB"
 			]
 		}
 	},
