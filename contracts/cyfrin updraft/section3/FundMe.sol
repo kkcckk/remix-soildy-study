@@ -44,5 +44,36 @@ contract FundMe {
         // 回撤任何已经完成的行为，并且返回剩余的gas费用. Undo any action that have been done, and send the remaining gas back
     }
 
-    function withdrawal() public {}
+    function withdrawal() public {
+        //  for循环
+        for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
+            address funder = funders[funderIndex];
+            addressToAmountFunded[funder] = 0;
+        }
+
+        // 重置数组中的地址
+        // 使用new关键字创建
+        funders = new address[](0);
+
+        // 实际取钱的方法
+        // 有三种方法
+
+        // transfer gas上限是2300，如果超过2300会报错
+        // msg.sender 是一个地址类型
+        // 而payable(msg.sender)是一个付款地址
+        payable(msg.sender).transfer(address(this).balance);
+
+        // send gas上限是2300，会返回是否成功的布尔值
+        bool sendSuccess = payable(msg.sender).send(address(this).balance);
+        // 使用require进行判断， 失败了进行revert
+        require(sendSuccess, "Send failed");
+
+        // call 可以自定义gas，同时可以调用任意函数通过函数签名
+        // 是一个低级命令（底层命令）
+        // 会返回两个变量，一个调用是否成功，一个是bytes类型的数据，这个变量保存了通过call调用的任意函数的结果或者返回值
+        // bytes memory dataReturned 返回的bytes类型的值如果不用可以不写
+        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
+        require(callSuccess, "Call failed");
+
+    }
 }
