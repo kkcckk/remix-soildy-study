@@ -72,6 +72,7 @@ contract FundMe {
         // 是一个低级命令（底层命令）
         // 会返回两个变量，一个调用是否成功，一个是bytes类型的数据，这个变量保存了通过call调用的任意函数的结果或者返回值
         // bytes memory dataReturned 返回的bytes类型的值如果不用可以不写
+        // 建议使用call函数进行转账
         (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
         require(callSuccess, "Call failed");
 
