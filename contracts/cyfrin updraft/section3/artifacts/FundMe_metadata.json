@@ -1,10 +1,37 @@
 {
 	"compiler": {
-		"version": "0.8.18+commit.87f61d96"
+		"version": "0.8.26+commit.8a97fa7a"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "NotOwner",
+				"type": "error"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "MINIMUM_USD",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
 			{
 				"inputs": [
 					{
@@ -52,12 +79,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "minimumUsd",
+				"name": "i_owner",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "address",
 						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -82,6 +109,10 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -90,6 +121,13 @@
 			"version": 1
 		},
 		"userdoc": {
+			"errors": {
+				"NotOwner()": [
+					{
+						"notice": "在remix中，部署好的合约在左侧，如果是红色的话闲显示转账功能，如果是橙色*"
+					}
+				]
+			},
 			"kind": "user",
 			"methods": {},
 			"version": 1
@@ -99,7 +137,7 @@
 		"compilationTarget": {
 			"contracts/cyfrin updraft/section3/FundMe.sol": "FundMe"
 		},
-		"evmVersion": "paris",
+		"evmVersion": "cancun",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -120,11 +158,11 @@
 			]
 		},
 		"contracts/cyfrin updraft/section3/FundMe.sol": {
-			"keccak256": "0x4e01b0199375545e6b79ca36db461ce3c4831535437812379535dc95dd745b24",
+			"keccak256": "0x581ea245c78081565402bc81ca86e52d87d033a7a46b64ce8fe570f093169e92",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://973bb0993bf83a427c1b48bb222fb3ff2bab6623b689826f3d4853ea14f77853",
-				"dweb:/ipfs/QmRNyxt8JpcMhMfKRDoMF3US9uh26D28QNwH6gvHN8r4GY"
+				"bzz-raw://3182ea6d991e838eb71e55672fadac23755c4f65e2de2cd69cd9c37aa7c8fe51",
+				"dweb:/ipfs/QmeM7iBvgAihr7B8HVptwwxLa88t13qpJbvWY84TbiGY7R"
 			]
 		},
 		"contracts/cyfrin updraft/section3/librarys/PriceConverter.sol": {
